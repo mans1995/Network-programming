@@ -103,7 +103,7 @@ void ajouterProgramme(int newsockfd) {
 	while (readAndWrite(newsockfd, fichierfd, buff, TAILLE_NOM*sizeof(char))); // lecture tant que pas EOF
 	
 	// Compilation du programme id.c
-	int errFd = open(NOM_FICHIER_ERR_COMPIL, O_CREAT | O_WRONLY| O_TRUNC, 0666); // création du fichier
+	int errFd = open(NOM_FICHIER_ERR_COMPIL, O_CREAT | O_WRONLY| O_TRUNC, PERM); // création du fichier
 	checkNeg(errFd, "Error open");	
 	int stderr_copy = dup(2); // redirection de stderr
 	checkNeg(stderr_copy, "Error dup");	
@@ -235,9 +235,9 @@ void executer(void *idProgrammearg0, void *noExecarg1) {
 	char resultatFichier[TAILLE_NOM];
 	sprintf(resultatFichier, "code/%d.txt", noExec);
 	int resultatFd = open(resultatFichier, O_CREAT | O_TRUNC | O_WRONLY, PERM);
-    dup2(resultatFd, 1);  // redirige stdout vers le fichier qui contient le résultat de l'exécution
+  dup2(resultatFd, 1);  // redirige stdout vers le fichier qui contient le résultat de l'exécution
 	execl(cheminFichier, nomFichier, NULL);
-  	perror("Error exec executer");
+  perror("Error exec executer");
 }
 
 long now() {

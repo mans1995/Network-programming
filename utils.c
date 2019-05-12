@@ -14,7 +14,7 @@ void checkNeg(int res, char* msg) {
 void checkNull(void* res, char* msg) {
   checkCond(res == NULL, msg);
 }
-pid_t fork_and_run(void (*handler)()) {
+pid_t forkAndRun(void (*handler)()) {
   int childId = fork();
   checkNeg(childId, "Error [fork_and_run]");
   // child process
@@ -58,16 +58,9 @@ void spipe(int* fildes) {
 }
 
 // que pour des châines de caractères
-bool readAndWrite(int fdRead, int fdWrite, char buff[], int size){
+int readAndWrite(int fdRead, int fdWrite, char buff[], int size){  
   int readSize;
   checkNeg(readSize = read(fdRead, buff,  size), "Error read in readAndWrite");
   checkNeg(write(fdWrite, buff, readSize), "Error write in readAndWrite");
-  bool endOfFile;
-  if ( buff[ (readSize-1) * sizeof(*buff) ] == EOF ) {
-    endOfFile = true;
-  }
-  else {
-    endOfFile = false;
-  }
-  return endOfFile;
+  return readSize;
 }

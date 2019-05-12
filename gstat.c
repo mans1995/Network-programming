@@ -18,7 +18,7 @@ int main(int argc, const char* argv[]){
 	printf("Acces obtenu.\n");
 	Programmes* progs = (Programmes*)(getShm(sizeof(Programmes), SHM_KEY).shmPtr); // mémoire partagée			
 	Programme programme = ((*progs).listeProgrammes)[progId];
-	printf("Programme numero %d :\n", programme.id);
+	printf("[Programme numero %d]\n", programme.id);
 	printf("Nom du fichier source : %s\n", programme.nomSource);
 	printf("Erreur de compilation : %s\n", programme.errorGen == 0 ? "oui" : "non");
 	printf("Nombre d'executions : %d\n", programme.nbExec);

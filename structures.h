@@ -18,7 +18,10 @@ typedef struct {
 
 typedef struct {
 	int code; // père = 0 ; filsMinuteur = 1   
-	char message[TAILLE_NOM]; // message pipe client auront une taille limitée 
+	int sockfd;
+	int numProgramme;
+	int port;
+	char* adr;
 } Message;
 
 typedef struct {

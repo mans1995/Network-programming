@@ -22,8 +22,8 @@ pid_t forkAndRun2(void (*handler)(void*, void*), void* arg0, void* arg1);
 
 void spipe(int* fildes);
 
-// renvoie faux tant que pas fin de lecture
-bool readAndWrite(int fdRead, int fdWrite, char buff[], int size);
+// renvoie faux si fin de lecture
+int readAndWrite(int fdRead, int fdWrite, char buff[], int size);
 
 	
 #endif

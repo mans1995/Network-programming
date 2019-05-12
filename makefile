@@ -1,6 +1,6 @@
 CFLAGS=-D_GNU_SOURCE -std=c11 -pedantic -Wall -Wvla -Werror -D_DEFAULT_SOURCE
 
-all: gstat maint serveur client
+all: gstat maint server client
 
 gstat: gstat.o sem.o shm.o  utils.o
 	cc $(CFLAGS) -o gstat gstat.o sem.o shm.o  utils.o
@@ -8,8 +8,8 @@ gstat: gstat.o sem.o shm.o  utils.o
 maint: maint.o sem.o shm.o  utils.o
 	cc $(CFLAGS) -o maint maint.o sem.o shm.o  utils.o
 
-serveur: serveur.o sem.o shm.o  utils.o socket.o
-	cc $(CFLAGS) -o serveur serveur.o sem.o shm.o  utils.o socket.o
+server: server.o sem.o shm.o  utils.o socket.o
+	cc $(CFLAGS) -o server server.o sem.o shm.o  utils.o socket.o
 
 client: client.o sem.o shm.o  utils.o socket.o
 	cc $(CFLAGS) -o client client.o sem.o shm.o  utils.o socket.o
@@ -33,8 +33,8 @@ gstat.o: sem.h shm.h structures.h utils.h gstat.c
 maint.o: sem.h shm.h structures.h utils.h maint.c
 	cc $(CFLAGS) -c maint.c
 
-serveur.o: sem.h shm.h structures.h utils.h socket.h serveur.c
-	cc $(CFLAGS) -c serveur.c
+server.o: sem.h shm.h structures.h utils.h socket.h server.c
+	cc $(CFLAGS) -c server.c
 
 client.o:  sem.h shm.h structures.h utils.h socket.h client.c
 	cc $(CFLAGS) -c client.c
@@ -43,5 +43,5 @@ clean:
 	rm *.o
 	rm gstat
 	rm maint
-	rm serveur 
+	rm server 
 	rm client

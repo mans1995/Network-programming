@@ -1,0 +1,5 @@
+Here will come:
+ - the .c codes
+ - the executable programs
+ - the .txt containing the standard output of the executed programs
+ - the compilation error .txt file

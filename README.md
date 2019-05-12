@@ -2,7 +2,7 @@
 
 This program has to be used on an UNIX OS because it explicitely uses some UNIX system calls.
 
-server : a server you launch to create, compile and execute files.
+server : a server you launch to create, compile and execute files..
 client : the client that connects to the server to add .c files on it and asks the server to execute the files it sent to it.
 maint  : the program create and delete the shared memory and the semaphores the server needs.
 gstat : access the information about the created programs

@@ -13,3 +13,5 @@ How to use it?<br>
 ./server PORT             # launches a server on the PORT<br>
 ./client HOST PORT DELAY  # launches a client thats connects to the HOST at the PORT and executes the desired programs each DELAY<br>
 ./maint 2                 # deletes the semaphore and shared memory
+
+(project made by a group of two people including myself)
